@@ -1,0 +1,275 @@
+/* client/src/index.css */
+
+/* ============================================
+   IMPORTACIÓN DE FUENTES CORPORATIVAS
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+/* ============================================
+   DIRECTIVAS DE TAILWIND
+   ============================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-montserrat antialiased;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold;
+    line-height: 1.2;
+  }
+
+  h1 { @apply text-3xl md:text-4xl; }
+  h2 { @apply text-2xl md:text-3xl; }
+  h3 { @apply text-xl md:text-2xl; }
+  h4 { @apply text-lg md:text-xl; }
+  h5 { @apply text-base md:text-lg; }
+  h6 { @apply text-sm md:text-base; }
+
+  p {
+    @apply font-cairo;
+    line-height: 1.6;
+  }
+}
+
+/* ============================================
+   COMPONENTES PERSONALIZADOS
+   ============================================ */
+@layer components {
+  
+  /* ------ BOTONES ------ */
+  .btn-primary {
+    @apply bg-csj-azul hover:bg-blue-800 active:bg-blue-900 
+           text-white font-bold py-2.5 px-5 rounded-lg 
+           transition-all duration-200 
+           shadow-md hover:shadow-lg 
+           focus:outline-none focus:ring-2 focus:ring-csj-azul focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-csj-azul hover:bg-blue-900 active:bg-blue-950
+           text-white font-bold py-2.5 px-5 rounded-lg 
+           transition-all duration-200 
+           shadow-md hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-csj-azul focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-csj-azul text-csj-azul 
+           hover:bg-csj-azul hover:text-white 
+           font-bold py-2 px-4 rounded-lg 
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-csj-azul focus:ring-offset-2;
+  }
+
+  .btn-danger {
+    @apply bg-colombia-rojo hover:bg-red-700 active:bg-red-800
+           text-white font-bold py-2.5 px-5 rounded-lg 
+           transition-all duration-200 
+           shadow-md hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-colombia-rojo focus:ring-offset-2;
+  }
+  
+  /* ------ BADGES DE ESTADO ------ */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
+  }
+
+  .badge-vencida {
+    @apply badge bg-semaforo-rojo text-white shadow-md shadow-semaforo-rojo/30;
+  }
+  
+  .badge-proxima {
+    @apply badge bg-semaforo-amarillo text-gray-900 shadow-md shadow-semaforo-amarillo/30;
+  }
+  
+  .badge-en-tiempo {
+    @apply badge bg-semaforo-verde text-white shadow-md shadow-semaforo-verde/30;
+  }
+  
+  .badge-cerrada {
+    @apply badge bg-semaforo-gris text-white shadow-md shadow-semaforo-gris/30;
+  }
+  
+  /* ------ CARDS ------ */
+  .card {
+    @apply bg-white rounded-xl shadow-md border border-gray-200 
+           p-6 hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .card-header {
+    @apply border-b-2 border-csj-azul pb-3 mb-4;
+  }
+
+  .card-csj {
+    @apply card border-l-4 border-csj-azul;
+  }
+  
+  /* ------ INPUTS Y FORMULARIOS ------ */
+  .input-csj {
+    @apply w-full px-4 py-2.5 
+           border-2 border-gray-300 rounded-lg 
+           focus:border-csj-azul focus:ring-2 focus:ring-csj-azul/20 
+           outline-none transition-all duration-200
+           font-cairo text-gray-700
+           placeholder:text-gray-400;
+  }
+  
+  .select-csj {
+    @apply input-csj bg-white cursor-pointer;
+  }
+
+  .textarea-csj {
+    @apply input-csj min-h-[100px] resize-y;
+  }
+
+  .label-csj {
+    @apply block text-sm font-bold text-gray-700 mb-2 font-montserrat uppercase tracking-wide;
+  }
+  
+  /* ------ TABLAS ------ */
+  .table-csj {
+    @apply w-full text-left text-sm;
+  }
+
+  .table-csj thead {
+    @apply bg-csj-azul text-white;
+  }
+
+  .table-csj th {
+    @apply px-6 py-4 font-black font-montserrat uppercase text-xs tracking-wider;
+  }
+
+  .table-csj tbody {
+    @apply divide-y divide-gray-100 bg-white;
+  }
+
+  .table-csj td {
+    @apply px-6 py-4 font-cairo;
+  }
+
+  .table-csj tbody tr {
+    @apply hover:bg-csj-azul/5 transition-colors;
+  }
+}
+
+/* ============================================
+   UTILIDADES ADICIONALES
+   ============================================ */
+@layer utilities {
+  
+  /* Animaciones */
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 0.4s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scrollbar personalizado */
+  .scrollbar-csj::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-csj::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .scrollbar-csj::-webkit-scrollbar-thumb {
+    @apply bg-csj-azul rounded-full;
+  }
+
+  .scrollbar-csj::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-800;
+  }
+  
+  /* Ocultar scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradientes corporativos */
+  .gradient-csj {
+    @apply bg-gradient-to-r from-csj-azul to-blue-600;
+  }
+
+  .gradient-csj-vertical {
+    @apply bg-gradient-to-b from-csj-azul to-blue-600;
+  }
+
+  /* Sombras corporativas */
+  .shadow-csj-verde {
+    box-shadow: 0 4px 14px 0 rgba(0, 65, 130, 0.25);
+  }
+
+  .shadow-csj-azul {
+    box-shadow: 0 4px 14px 0 rgba(30, 58, 107, 0.25);
+  }
+}
+
+/* ============================================
+   ESTADOS DE CARGA Y PLACEHOLDERS
+   ============================================ */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(0, 65, 130, 0.1);
+  border-top-color: #004182;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
